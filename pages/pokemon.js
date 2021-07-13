@@ -1,32 +1,48 @@
 import React from "react";
 import Layout from "components/Layout";
 import Link from "next/Link";
-import { Heading, Image, Text } from "@chakra-ui/react";
+import { Flex, Heading, Image, Text } from "@chakra-ui/react";
 
 function pokemon({ poke }) {
   console.log(poke);
-  return (<>
+  return (
+    <>
       <Layout title={poke.name}>
-        <Heading as="h1" textTransform="capitalize">{poke.name}</Heading>
-        <Image src={poke.image} alt={poke.name} />
-        <Text><span>Weight:</span>{poke.weight}</Text>
-        <Text><span>Height:</span>{poke.height}</Text>
-        <Heading as="h2" textTransform="capitalize">Types</Heading>
+        <Flex
+          alignItems="center"
+          justifyContent="center"
+          flexDirection="column"
+          border="2px solid green"
+        >
+          <Heading as="h1" textTransform="capitalize">
+            {poke.name}
+          </Heading>
+          <Image src={poke.image} alt={poke.name} boxSize="500px" />
+          <Text>
+            <span>Weight:</span>
+            {poke.weight}
+          </Text>
+          <Text>
+            <span>Height:</span>
+            {poke.height}
+          </Text>
+          <Heading as="h2">
+            Types
+          </Heading>
 
-        {poke.types.map((type, index)=>  (
-            <Text key={index}>{type.type.name}</Text>
-        ))}
+          {poke.types.map((type, index) => (
+            <Text key={index} textTransform="capitalize">{type.type.name}</Text>
+          ))}
 
-        <Text>
+          <Text>
             <Link href="/">
-                <a>
-                    Home
-                </a>
+              <a>Home</a>
             </Link>
-        </Text>
-
+          </Text>
+        </Flex>
       </Layout>
-  </>);
+    </>
+  );
 }
 
 export default pokemon;
