@@ -6,7 +6,7 @@ const Layout = ({ title, children }) => {
     <React.Fragment>
       <HEAD>
         <title>{title}</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/icon-file.png" />
       </HEAD>
       {children}
     </React.Fragment>
