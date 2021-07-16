@@ -19,7 +19,7 @@ function Navbar() {
             pointerEvents="none"
             children={<SearchIcon color="gray.300" w={6} h={6} pt={1.5}  />}
           />
-          <Input placeholder="Search . . ." size="lg" borderRadius="2rem"/>
+          <Input placeholder="Search..." size="lg" borderRadius="2rem"/>
         </InputGroup>
       </Flex>
 
