@@ -1,4 +1,42 @@
-// import React from "react";
+import React from "react";
+import Layout from "components/Layout";
+import Link from "next/Link";
+import { Flex, Heading, Image, Text } from "@chakra-ui/react";
+import Details from "@/components/Details/Details";
+
+function pokemon({ poke }) {
+  return (
+    <>
+      <Layout title={poke.name}>
+        <Details poke={poke}/>
+      </Layout>
+    </>
+  );
+}
+
+export default pokemon;
+
+export async function getServerSideProps({ query }) {
+    const id = query.id;
+    try {
+      const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+      const poke = await res.json();
+      const paddedIndex = ("00" + id).slice(-3);
+      const image = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${paddedIndex}.png`;
+      poke.image = image;
+  
+      return {
+        props: { poke },
+      };
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+
+
+
+  // import React from "react";
 // import Layout from "components/Layout";
 // import Link from "next/Link";
 // import { Flex, Heading, Image, Text } from "@chakra-ui/react";
@@ -63,38 +101,3 @@
 //     console.log(err);
 //   }
 // }
-
-import React from "react";
-import Layout from "components/Layout";
-import Link from "next/Link";
-import { Flex, Heading, Image, Text } from "@chakra-ui/react";
-import Details from "@/components/Details/Details";
-
-function pokemon({ poke }) {
-  return (
-    <>
-      <Layout title={poke.name}>
-        <Details poke={poke}/>
-      </Layout>
-    </>
-  );
-}
-
-export default pokemon;
-
-export async function getServerSideProps({ query }) {
-    const id = query.id;
-    try {
-      const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
-      const poke = await res.json();
-      const paddedIndex = ("00" + id).slice(-3);
-      const image = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${paddedIndex}.png`;
-      poke.image = image;
-  
-      return {
-        props: { poke },
-      };
-    } catch (err) {
-      console.log(err);
-    }
-  }
