@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { Flex, Heading, Image, Text, Input, InputRightElement, InputGroup } from "@chakra-ui/react";
 import { SearchIcon } from '@chakra-ui/icons';
+import { useEffect } from "react";
 
 function Navbar() {
+
+  const [state, setstate] = useState();
+
+  useEffect(() => {
+    
+    return () => {
+      
+    }
+  }, [])
+
   return (
     <Flex
       as="nav"
@@ -13,13 +24,13 @@ function Navbar() {
       bg="teal.500"
       color="white"
     >
-      <Flex alignItems="center" justifyContent="center" mr={5}>
+      <Flex alignItems="center" justifyContent="center" mr={5} color="white">
         <InputGroup>
           <InputRightElement
             pointerEvents="none"
-            children={<SearchIcon color="gray.300" w={6} h={6} pt={1.5}  />}
+            children={<SearchIcon color="white" w={6} h={6} pt={1.5}  />}
           />
-          <Input placeholder="Search..." size="lg" borderRadius="2rem"/>
+          <Input placeholder="Search..." size="lg" borderRadius="2rem" color="white"/>
         </InputGroup>
       </Flex>
 
