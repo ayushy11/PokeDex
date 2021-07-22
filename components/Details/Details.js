@@ -2,11 +2,13 @@ import React from "react";
 import Layout from "components/Layout";
 import Link from "next/Link";
 import { Flex, Heading, Image, Text } from "@chakra-ui/react";
+import NavbarDetails from "../NavbarDetails/NavbarDetails";
 
 function Details({ poke }) {
   console.log(poke);
   return (
     <>      
+        <NavbarDetails />
         <Flex
           alignItems="center"
           justifyContent="center"

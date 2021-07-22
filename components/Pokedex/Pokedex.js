@@ -7,12 +7,18 @@ import { Flex, Image, List, ListItem } from "@chakra-ui/react";
 export default function Pokedex({ data }) {
   console.log(data);
 
+  // const filteredPoke = data.filter((pok) => 
+
+  // )
+
   return (
     <>
      
         <List>
           <Flex flexWrap="wrap">
+
             {data.map((poke, index) => (
+
               <Flex justifyContent="center" border="1px solid gray" width="25%">
                 <ListItem key={index}>
                   <Link href={`/pokemon?id=${index + 1}`}>
@@ -24,7 +30,9 @@ export default function Pokedex({ data }) {
                   </Link>
                 </ListItem>
               </Flex>
+
             ))}
+
           </Flex>
         </List>
      

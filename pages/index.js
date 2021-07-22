@@ -5,10 +5,6 @@ import Link from "next/Link";
 import { Flex, Image, List, ListItem } from "@chakra-ui/react";
 import Navbar from "@/components/Navbar/Navbar";
 
-// import Link from "next/link";
-// import { motion, AnimatePresence } from "framer-motion";
-// import { css, useTheme } from "@emotion/react";
-
 export default function Home({ pokemon }) {
   return (
     <>
