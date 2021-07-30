@@ -12,11 +12,7 @@ import { SearchIcon } from "@chakra-ui/icons";
 import { useEffect } from "react";
 
 function Navbar() {
-  const [search, setSearch] = useState();
-
-  useEffect(() => {
-    return () => {};
-  }, []);
+  const [search, setSearch] = useState("this is search text");
 
   return (
     <Flex
@@ -42,7 +38,7 @@ function Navbar() {
             size="lg"
             borderRadius="2rem"
             color="white"
-            onChange={(e)=> setSearch(e.target.value)}
+            onChange={(e) => setSearch(e.target.value)}
           />
         </InputGroup>
       </Flex>
@@ -52,31 +48,6 @@ function Navbar() {
           Pokedex
         </Heading>
       </Flex>
-
-      {/* <Stack
-        direction={{ base: "column", md: "row" }}
-        display={{ base: isOpen ? "block" : "none", md: "flex" }}
-        width={{ base: "full", md: "auto" }}
-        alignItems="center"
-        flexGrow={1}
-        mt={{ base: 4, md: 0 }}
-      >
-        <Text>Docs</Text>
-        <Text>Examples</Text>
-        <Text>Blog</Text>
-      </Stack> */}
-
-      {/* <Box
-        display={{ base: isOpen ? "block" : "none", md: "block" }}
-        mt={{ base: 4, md: 0 }}
-      >
-        <Button
-          variant="outline"
-          _hover={{ bg: "teal.700", borderColor: "teal.700" }}
-        >
-          Create account
-        </Button>
-      </Box> */}
     </Flex>
   );
 }

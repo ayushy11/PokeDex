@@ -3,13 +3,13 @@ import Layout from "components/Layout";
 import Pokedex from "@/components/Pokedex/Pokedex.js";
 import Link from "next/Link";
 import { Flex, Image, List, ListItem } from "@chakra-ui/react";
-import Navbar from "@/components/Navbar/Navbar";
+// import Navbar from "@/components/Navbar/Navbar";
 
 export default function Home({ pokemon }) {
   return (
     <>
       <Layout title="Pokedex">  
-        <Navbar />     
+        {/* <Navbar />      */}
         <Pokedex data={pokemon}/>
       </Layout>
     </>
@@ -18,7 +18,7 @@ export default function Home({ pokemon }) {
 
 export async function getStaticProps(context) {
   try {
-    const res = await fetch("https://pokeapi.co/api/v2/pokemon?limit=151");
+    const res = await fetch("https://pokeapi.co/api/v2/pokemon?limit=898");
     const { results } = await res.json();
 
     const pokemon = results.map((result, index) => {
