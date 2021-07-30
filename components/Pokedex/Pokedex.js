@@ -60,13 +60,13 @@ export default function Pokedex({ data }) {
     </Flex>
 
       <List>
-        <Flex flexWrap="wrap">
+        <Flex flexWrap="wrap" justifyContent="center" width="100%">
           {( search != null )
             ? filteredPoke.map((poke, index) => (
                 <Flex
                   justifyContent="center"
-                  border="1px solid gray"
-                  width="25%"
+                  border="1px solid lightGray"
+                  width="11%"
                 >
                   <ListItem key={index}>
                     <Link href={`/pokemon?id=${index + 1}`}>
