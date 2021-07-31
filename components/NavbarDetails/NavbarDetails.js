@@ -19,22 +19,23 @@ function NavbarDetails() {
       align="center"
       justify="space-between"
       wrap="wrap"
-      padding={6}
+      padding={2}
       bg="teal.500"
       color="white"
       background="#00F260" /* fallback for old browsers */
       background="-webkit-linear-gradient(to right, #141e30, #243b55)" /* Chrome 10-25, Safari 5.1-6 */
       background="linear-gradient(to right, #141e30, #243b55)" /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     >
-      <Flex alignItems="center" justifyContent="center" mr={5}>
+      <Flex alignItems="center" justifyContent="center" mr={8}>
         <Link href="/">
           <a>
-            <ArrowBackIcon />
+            <ArrowBackIcon h="1.5rem" w="1.5rem"/>
           </a>
         </Link>
       </Flex>
 
       <Flex align="center" mr={5}>
+      <Image src="icon-file.png" h="5rem" w="5rem"/>
         <Heading as="h1" size="lg" letterSpacing={"tighter"}>
           Pokedex
         </Heading>

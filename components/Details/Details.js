@@ -15,27 +15,27 @@ function Details({ poke }) {
           flexDirection="column"
           border="2px solid green"
         >
-          <Heading as="h1" textTransform="capitalize">
+          <Heading as="h1" color="darkGray" textTransform="uppercase" pt="1.5rem">
             {poke.name}
           </Heading>
           <Image src={poke.image} alt={poke.name} boxSize="500px" />
-          <Text>
-            <span>Weight:</span>
-            {poke.weight}
+          <Text color="textGray">
+            <span>Weight:</span>{"  "}
+            {poke.weight}g
           </Text>
-          <Text>
-            <span>Height:</span>
-            {poke.height}
+          <Text color="textGray">
+            <span>Height:</span>{"  "}
+            {poke.height}u
           </Text>
-          <Heading as="h2">
-            Types
+          <Heading as="h3" textTransform="uppercase">
+            Typing
           </Heading>
 
           {poke.types.map((type, index) => (
             <Text key={index} textTransform="capitalize">{type.type.name}</Text>
           ))}
 
-          <Text>
+          <Text color="darkGray" textTransform="uppercase">
             <Link href="/">
               <a>Home</a>
             </Link>
