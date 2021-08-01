@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Layout from "components/Layout";
 import Pokedex from "@/components/Pokedex/Pokedex.js";
-import Link from "next/Link";
+import Link from "next/link";
 import { Flex, Image, List, ListItem } from "@chakra-ui/react";
 // import Navbar from "@/components/Navbar/Navbar";
 
