@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { ArrowBackIcon, SearchIcon } from "@chakra-ui/icons";
 import { useEffect } from "react";
-import Link from "next/link";
+import Link from "next/Link";
 
 function NavbarDetails() {
   return (
