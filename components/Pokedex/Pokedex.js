@@ -76,7 +76,7 @@ export default function Pokedex({ data }) {
                       <Flex flexDirection="column" alignItems="center">
                       <Flex justifyContent="space-between" width="100%">
                         <span>{index + 1}</span>
-                        <Text>Type</Text>
+                        {/* <Text>Type</Text> */}
                       </Flex>
                         <Image
                           src={poke.image}
