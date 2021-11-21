@@ -32,13 +32,15 @@ function Details({ poke }) {
           width="100%"
           alignItems="center"
           justifyContent="space-between"
+          flexDir={{ xs: "column", sm: "row" }}
         >
           <Flex
             alignItems="center"
             flexDirection="column"
             // border="2px solid black"
-            pl="2rem"
-            ml="2rem"
+            w={{ xs: "100%", sm: "10%" }}
+            pl={{ sm: "2rem" }}
+            ml={{ sm: "2rem" }}
           >
             <Text color="textGray">
               <span>Weight:</span>
@@ -68,20 +70,26 @@ function Details({ poke }) {
           <Flex
             alignItems="center"
             flexDirection="column"
-            // border="2px solid black"
+            // border="2px solid orange"
             justifyContent="center"
-            pr="5rem"
+            pr={{ sm: "5rem" }}
+            w={{ xs: "100%", sm: "50%" }}
           >
-            <Image src={poke.image} alt={poke.name} boxSize="500px" />
+            <Image
+              src={poke.image}
+              alt={poke.name}
+              boxSize={{ xs: "auto", sm: "500px" }}
+            />
           </Flex>
           <Flex
             alignItems="center"
             flexDirection="column"
             // border="2px solid black"
-            pr="2rem"
-            mr="2rem"
+            pr={{ sm: "2rem" }}
+            mr={{ sm: "2rem" }}
+            w={{ xs: "100%", sm: "10%" }}
           >
-            stats
+            Stats
           </Flex>
         </Flex>
         <Text color="darkGray" textTransform="uppercase">
