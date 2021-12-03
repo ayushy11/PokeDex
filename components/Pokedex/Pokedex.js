@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import Layout from "components/Layout";
 import Link from "next/link";
+import dynamic from "next/dynamic";
+import useInView from "react-cool-inview";
+
 import {
   Flex,
   Heading,
@@ -24,6 +27,10 @@ export default function Pokedex({ data }) {
   const filteredPoke = data.filter((poke) =>
     poke.name.toLowerCase().includes(search.toLowerCase())
   );
+
+  const { observe, inView } = useInView({
+    onEnter: ({ unobserve }) => unobserve(), // only run once
+  });
 
   return (
     <>
@@ -69,78 +76,80 @@ export default function Pokedex({ data }) {
         </Flex>
       </Flex>
 
-      <List>
-        <Grid
-          templateColumns={{ xs: "repeat(3,1fr)", sm: "repeat(9, 1fr)" }}
-          gap={6}
-          mt="1rem"
-          mr={{ xs: "0.5rem", sm: "1rem" }}
-          ml={{ xs: "0.5rem", sm: "1rem" }}
-        >
-          {search != null
-            ? filteredPoke.map((poke, index) => (
-                <GridItem                 
-                  boxShadow="lg"
-                  sx={{
-                    "&:hover": {
-                      transform: "scale(1.2)",
-                      boxShadow: "0 0 40px #a6fffb",
-                      animation: "textColor 10s ease infinite",                    
-                    },
-                  }}
-                >
-                  <ListItem key={index}>
-                    <Link href={`/pokemon?id=${index + 1}`}>
-                      <a>
-                        <Flex flexDirection="column" alignItems="center">
-                          <Flex justifyContent="space-between" width="100%">
-                            <span>{index + 1}</span>
-                            {/* <Text>Type</Text> */}
+      <List ref={observe}>
+        {inView && (
+          <Grid
+            templateColumns={{ xs: "repeat(3,1fr)", sm: "repeat(9, 1fr)" }}
+            gap={6}
+            mt="1rem"
+            mr={{ xs: "0.5rem", sm: "1rem" }}
+            ml={{ xs: "0.5rem", sm: "1rem" }}
+          >
+            {search != null
+              ? filteredPoke.map((poke, index) => (
+                  <GridItem
+                    boxShadow="lg"
+                    sx={{
+                      "&:hover": {
+                        transform: "scale(1.2)",
+                        boxShadow: "0 0 40px #a6fffb",
+                        animation: "textColor 10s ease infinite",
+                      },
+                    }}
+                  >
+                    <ListItem key={index}>
+                      <Link href={`/pokemon?id=${index + 1}`}>
+                        <a>
+                          <Flex flexDirection="column" alignItems="center">
+                            <Flex justifyContent="space-between" width="100%">
+                              <span>{index + 1}</span>
+                              {/* <Text>Type</Text> */}
+                            </Flex>
+                            <Image
+                              src={poke.image}
+                              alt={poke.name}
+                              boxSize="100px"
+                            />
+                            <Text
+                              // color="darkGray"
+                              textTransform="capitalize"
+                            >
+                              {poke.name}
+                            </Text>
                           </Flex>
+                        </a>
+                      </Link>
+                    </ListItem>
+                  </GridItem>
+                ))
+              : data.map((poke, index) => (
+                  <GridItem
+                    boxShadow="lg"
+                    sx={{
+                      "&:hover": {
+                        transform: "scale(1.2)",
+                        boxShadow: "0 0 40px #a6fffb",
+                        animation: "textColor 10s ease infinite",
+                      },
+                    }}
+                  >
+                    <ListItem key={index}>
+                      <Link href={`/pokemon?id=${index + 1}`}>
+                        <a>
                           <Image
                             src={poke.image}
                             alt={poke.name}
                             boxSize="100px"
                           />
-                          <Text
-                            // color="darkGray"
-                            textTransform="capitalize"
-                          >
-                            {poke.name}
-                          </Text>
-                        </Flex>
-                      </a>
-                    </Link>
-                  </ListItem>
-                </GridItem>
-              ))
-            : data.map((poke, index) => (
-                <GridItem                  
-                   boxShadow="lg"
-                  sx={{
-                    "&:hover": {
-                      transform: "scale(1.2)",
-                      boxShadow: "0 0 40px #a6fffb",
-                      animation: "textColor 10s ease infinite",                    
-                    },
-                  }}
-                >
-                  <ListItem key={index}>
-                    <Link href={`/pokemon?id=${index + 1}`}>
-                      <a>
-                        <Image
-                          src={poke.image}
-                          alt={poke.name}
-                          boxSize="100px"
-                        />
-                        <span>{index + 1}</span>
-                        {poke.name}
-                      </a>
-                    </Link>
-                  </ListItem>
-                </GridItem>
-              ))}
-        </Grid>
+                          <span>{index + 1}</span>
+                          {poke.name}
+                        </a>
+                      </Link>
+                    </ListItem>
+                  </GridItem>
+                ))}
+          </Grid>
+        )}
       </List>
     </>
   );
