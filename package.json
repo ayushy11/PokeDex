@@ -25,7 +25,8 @@
     "react-redux": "^7.2.4"
   },
   "devDependencies": {
-    "cz-conventional-changelog": "3.3.0"
+    "cz-conventional-changelog": "3.3.0",
+    "prettier": "2.5.0"
   },
   "config": {
     "commitizen": {

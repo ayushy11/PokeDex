@@ -21,7 +21,8 @@ import { SearchIcon } from "@chakra-ui/icons";
 import { useEffect } from "react";
 
 export default function Pokedex({ data }) {
-  // console.log(data);
+  // console.log('!!!!!!!!!!!', data)
+
   const [search, setSearch] = useState("");
 
   const filteredPoke = data.filter((poke) =>
@@ -86,68 +87,68 @@ export default function Pokedex({ data }) {
             ml={{ xs: "0.5rem", sm: "1rem" }}
           >
             {search != null
-              ? filteredPoke.map((poke, index) => (
-                  <GridItem
-                    boxShadow="lg"
-                    sx={{
-                      "&:hover": {
-                        transform: "scale(1.2)",
-                        boxShadow: "0 0 40px #a6fffb",
-                        animation: "textColor 10s ease infinite",
-                      },
-                    }}
-                  >
-                    <ListItem key={index}>
-                      <Link href={`/pokemon?id=${index + 1}`}>
-                        <a>
-                          <Flex flexDirection="column" alignItems="center">
-                            <Flex justifyContent="space-between" width="100%">
-                              <span>{index + 1}</span>
-                              {/* <Text>Type</Text> */}
-                            </Flex>
-                            <Image
-                              src={poke.image}
-                              alt={poke.name}
-                              boxSize="100px"
-                            />
-                            <Text
-                              // color="darkGray"
-                              textTransform="capitalize"
-                            >
-                              {poke.name}
-                            </Text>
+              ? filteredPoke.map((poke) => (
+                <GridItem
+                  boxShadow="lg"
+                  sx={{
+                    "&:hover": {
+                      transform: "scale(1.2)",
+                      boxShadow: "0 0 40px #a6fffb",
+                      animation: "textColor 10s ease infinite",
+                    },
+                  }}
+                >
+                  <ListItem key={poke.id}>
+                    <Link href={`/pokemon?id=${poke.id}`}>
+                      <a>
+                        <Flex flexDirection="column" alignItems="center">
+                          <Flex justifyContent="space-between" width="100%">
+                            <span>{poke.id}</span>
+                            {/* <Text>Type</Text> */}
                           </Flex>
-                        </a>
-                      </Link>
-                    </ListItem>
-                  </GridItem>
-                ))
-              : data.map((poke, index) => (
-                  <GridItem
-                    boxShadow="lg"
-                    sx={{
-                      "&:hover": {
-                        transform: "scale(1.2)",
-                        boxShadow: "0 0 40px #a6fffb",
-                        animation: "textColor 10s ease infinite",
-                      },
-                    }}
-                  >
-                    <ListItem key={index}>
-                      <Link href={`/pokemon?id=${index + 1}`}>
-                        <a>
                           <Image
                             src={poke.image}
                             alt={poke.name}
                             boxSize="100px"
                           />
-                          <span>{index + 1}</span>
-                          {poke.name}
-                        </a>
-                      </Link>
-                    </ListItem>
-                  </GridItem>
-                ))}
+                          <Text
+                            // color="darkGray"
+                            textTransform="capitalize"
+                          >
+                            {poke.name}
+                          </Text>
+                        </Flex>
+                      </a>
+                    </Link>
+                  </ListItem>
+                </GridItem>
+              ))
+              : data.map((poke, index) => (
+                <GridItem
+                  boxShadow="lg"
+                  sx={{
+                    "&:hover": {
+                      transform: "scale(1.2)",
+                      boxShadow: "0 0 40px #a6fffb",
+                      animation: "textColor 10s ease infinite",
+                    },
+                  }}
+                >
+                  <ListItem key={index}>
+                    <Link href={`/pokemon?id=${index + 1}`}>
+                      <a>
+                        <Image
+                          src={poke.image}
+                          alt={poke.name}
+                          boxSize="100px"
+                        />
+                        <span>{index + 1}</span>
+                        {poke.name}
+                      </a>
+                    </Link>
+                  </ListItem>
+                </GridItem>
+              ))}
           </Grid>
         )}
       </List>

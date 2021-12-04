@@ -23,10 +23,12 @@ export async function getStaticProps(context) {
 
     const pokemon = results.map((result, index) => {
       const paddedIndex = ("00" + (index + 1)).slice(-3);
+      const id = paddedIndex;
       const image = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${paddedIndex}.png`;
       return {
         ...result,
         image,
+        id
       };
     });
     return {
